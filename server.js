@@ -1,14 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const dns = require('dns');
 require('dotenv').config();
-
-dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const mongoURI = process.env.MONGODB_URI || 'mongodb+srv://kusnuthshaik24_db_user:kusnuth@20@cluster0.umvpmlg.mongodb.net/kusnuth?retryWrites=true&w=majority';
+const mongoURI = process.env.MONGODB_URI || 'mongodb+srv://kusnuthshaik24_db_user:kusnuth%4020@cluster0.umvpmlg.mongodb.net/kusnuth?retryWrites=true&w=majority';
 
 app.use(cors({
   origin: 'https://bmif-mu.vercel.app',
