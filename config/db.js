@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
-
-const dbURI = 'mongodb://localhost:27017/bmi_tracker'; 
+const dns = require("dns")
+dns.setServers(["8.8.8.8","8.8.4.4"])
+const dbURI = 'mongodb+srv://kusnuthshaik24_db_user:kusnuth@20@cluster0.umvpmlg.mongodb.net/kusnuth?appname=Cluster0'; 
 
 const connectDB = () => {
   mongoose.connect(dbURI)
