@@ -1,25 +1,11 @@
-const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
-const bmiRoutes = require('./routes/bmiRoutes');
+require('dotenv').config();
 
-const app = express();
+const mongoURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/bmi_tracker';
 
-const PORT = 5000;
-const MONGO_URI = 'mongodb://127.0.0.1:27017/bmi_tracker';
-
-app.use(cors());
-app.use(express.json());
-
-app.use('/api/bmi', bmiRoutes);
-
-mongoose.connect(MONGO_URI)
-  .then(() => {
-    console.log('Connected to MongoDB');
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-    });
-  })
+mongoose.connect(mongoURI)
+  .then(() => console.log('Database connected successfully!'))
   .catch((err) => {
     console.error('Database connection error:', err);
+    process.exit(1);
   });
