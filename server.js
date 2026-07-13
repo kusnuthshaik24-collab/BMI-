@@ -8,7 +8,7 @@ dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const mongoURI = process.env.MONGODB_URI || 'mongodb+srv://kusnuthshaik24_db_user:kusnuth@20@cluster0.umvpmlg.mongodb.net/kusnuth?appname=Cluster0';
+const mongoURI = process.env.MONGODB_URI || 'mongodb+srv://kusnuthshaik24_db_user:kusnuth@20@cluster0.umvpmlg.mongodb.net/kusnuth?retryWrites=true&w=majority';
 
 app.use(cors({
   origin: 'https://bmif-mu.vercel.app',
