@@ -9,7 +9,8 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 10000; // Render automatically assigns 10000
 
-const mongoURI = process.env.MONGODB_URI || 'mongodb://badi:choti20@cluster0.umvpmlg.mongodb.net/BMI_Tracker';
+// FIX: Changed protocol from 'mongodb://' to 'mongodb+srv://'
+const mongoURI = process.env.MONGODB_URI || 'mongodb+srv://badi:choti20@cluster0.umvpmlg.mongodb.net/BMI_Tracker';
 
 // --- BULLETPROOF CORS CONFIGURATION ---
 app.use(cors({
@@ -23,8 +24,10 @@ app.use(cors({
 
 app.use(express.json());
 
-// Database Connection
-mongoose.connect(mongoURI)
+// Database Connection with IPv4 forced
+mongoose.connect(mongoURI, {
+  family: 4 // FORCES IPv4 (Resolves local DNS and ReplicaSet connection issues)
+})
   .then(() => console.log('Database connected successfully!'))
   .catch((err) => {
     console.error('Database connection error:', err.message);
