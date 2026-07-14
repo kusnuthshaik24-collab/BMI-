@@ -7,15 +7,11 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 10000; // Render automatically assigns 10000
+const PORT = process.env.PORT || 10000; 
 
-// FIX: Changed protocol from 'mongodb://' to 'mongodb+srv://'
-const mongoURI = process.env.MONGODB_URI || 'mongodb+srv://badi:choti20@cluster0.umvpmlg.mongodb.net/BMI_Tracker';
+const mongoURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/bmi_tracker';
 
-// --- BULLETPROOF CORS CONFIGURATION ---
 app.use(cors({
-  // Setting origin to true dynamically reflects the requesting origin.
-  // This automatically accepts localhost, Vercel subdomains, and custom domains.
   origin: true, 
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
