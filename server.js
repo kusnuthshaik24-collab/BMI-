@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const mongoURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/bmi_tracker';
+const mongoURI = "mongodb+srv://badi:choti20@cluster0.umvpmlg.mongodb.net/BMI_Tracker";
 
 app.use(cors({
   origin: (origin, callback) => {
