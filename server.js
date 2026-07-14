@@ -1,14 +1,19 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const mongoURI = process.env.MONGODB_URI || 'mongodb+srv://kusnuthshaik24_db_user:kusnuth%4020@cluster0.umvpmlg.mongodb.net/kusnuth?retryWrites=true&w=majority';
+const mongoURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/bmi_tracker';
 
 app.use(cors({
-  origin: 'https://bmif-mu.vercel.app',
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    const isLocalhost = /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin);
+    const allowedOrigins = ['https://bmif-mu.vercel.app'];
+    if (isLocalhost || allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(new Error('Not allowed by CORS'));
+  },
   credentials: true
 }));
 app.use(express.json());
