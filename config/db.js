@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const dbURI = 'mongodb://localhost:27017/bmi_tracker'; 
+const dbURI = 'mongodb+srv://badi:kusnuth20@cluster0.umvpmlg.mongodb.net/BMI_Tracker'; 
 
 const connectDB = () => {
   mongoose.connect(dbURI)
