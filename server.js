@@ -9,7 +9,7 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 10000; 
 
-const mongoURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/bmi_tracker';
+const mongoURI = process.env.MONGO_URI;
 
 app.use(cors({
   origin: true, 
