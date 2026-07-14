@@ -1,14 +1,11 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const dbURI = process.env.MONGO_URI;
+const dbURI = 'mongodb+srv://badi:Shaik90141@cluster0.umvpmlg.mongodb.net/BMI?retryWrites=true&w=majority'; 
 
-const connectDB = async () => {
-  try {
-    await mongoose.connect(dbURI);
-    console.log("Connected to MongoDB successfully!");
-  } catch (err) {
-    console.error("Database connection error:", err.message);
-  }
+const connectDB = () => {
+  mongoose.connect(dbURI)
+    .then(() => console.log('Connected to MongoDB successfully!'))
+    .catch((err) => console.error('MongoDB connection error:', err));
 };
 
 module.exports = connectDB;
